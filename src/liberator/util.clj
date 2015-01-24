@@ -4,7 +4,10 @@
            java.util.Locale
            java.util.Date))
 
-(defn make-function [x]
+(defn make-function
+  "Make sure x is a function that we can call.
+  If x is a fn already, just return it. If it is a value, return a function that returns the value"
+  [x]
   (if (or (fn? x) (keyword? x)) x (constantly x)))
 
 (defn apply-if-function [function-or-value request]
