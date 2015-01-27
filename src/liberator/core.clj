@@ -129,7 +129,7 @@
          (when-not (empty? charset) "Accept-Charset")
          (when-not (empty? language) "Accept-Language")
          (when-not (or (empty? encoding) (= "identity" encoding)) "Accept-Encoding")
-         (vary-fn context)]
+          (when vary-fn (vary-fn context))]
         (remove nil?)
         (interpose ", ")
         (apply str))))
